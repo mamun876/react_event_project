@@ -5,7 +5,7 @@ export default function Price() {
     <div>
 
         {/* BreadCrumb Starts */}  
-        <section className="breadcrumb-main" style={{backgroundImage: 'url(assets/images//pexels-wendy-wei-1190297.jpg)'}}>
+        <section className="breadcrumb-main" style={{backgroundImage: 'url(assets/images//pexels-wendy-wei-1190297.jpg)'}}>php
           <div className="breadcrumb-outer">
             <div className="container">
               <div className="breadcrumb-content text-center pt-14 pb-2">
