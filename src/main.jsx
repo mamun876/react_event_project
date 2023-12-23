@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 
 import Gallery from './component/Gallery';
 import Price from './component/Price';
+import UserRegistration from './pages/UserRegistration';
 
 
 
@@ -29,8 +30,16 @@ const router = createBrowserRouter([
         element:<About></About>
       },
       {
+        path: 'registration',
+        element:<UserRegistration></UserRegistration>
+      },
+      {
         path:'contact',
         element:<Contact></Contact>
+      },
+      {
+        path:'UserRegistration',
+        element:<UserRegistration></UserRegistration>
       },
       {
         path:'gallery',

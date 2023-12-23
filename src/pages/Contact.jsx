@@ -1,6 +1,32 @@
 
-
+import axios from 'axios';
+import  {useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 export default function Contact() {
+
+  const[msg, setMsg] = useState({});
+  const navigate = useNavigate();
+
+
+  const handleSubmit = (e)=> {
+      e.preventDefault();
+      msgInsert();
+  }
+  const handleChange = (e)=> {
+      const name = e.target.name;
+      const value = e.target.value;
+      setMsg((val)=>({...val, [name]:value}));
+  }
+
+  const msgInsert = ()=>{
+      axios.post("http://localhost/React/react_event_project/api/contact.php", {data:msg}).then(res=>{
+          alert(res.data.msg);
+          return navigate('/contact');
+      })
+     
+  }
+
+  
   return (
     <div>
       {/* BreadCrumb Starts */}  
@@ -74,21 +100,18 @@ export default function Contact() {
                   <div className="row">
                     <div className="col-lg-8 pe-lg-4 mb-4">
                       <div id="contactform-error-msg" />
-                      <form method="post" action="#" name="contactform2" id="contactform2">
+                      <form onSubmit={handleSubmit} name="sentMessage" id="contactform2">
                         <div className="form-group mb-2">
-                          <input type="text" name="first_name" className="form-control" id="fullname" placeholder="First Name" />
+                          <input type="text" name='name' value={msg.name} onChange={handleChange} className="form-control" id="fullname" placeholder="First Name" />
                         </div>
                         <div className="form-group mb-2">
-                          <input type="email" name="email" className="form-control" id="email" placeholder="Email" />
-                        </div>
-                        <div className="form-group mb-2">
-                          <input type="text" name="phone" className="form-control" id="phnumber" placeholder="Phone" />
+                          <input type="email" name='email' value={msg.email} onChange={handleChange} className="form-control" id="email" placeholder="Email" />
                         </div>
                         <div className="form-group mb-2">
                           <input type="text" name="subject" className="form-control" id="llastname" placeholder="subject" />
                         </div>
                         <div className="textarea mb-2">
-                          <textarea name="comments" placeholder="Enter a message" defaultValue={""} />
+                          <textarea name='message' value={msg.subject} onChange={handleChange} placeholder="Enter a message" defaultValue={""} />
                         </div>
                         <div className="comment-btn text-center text-lg-start">
                           <input type="submit" className="nir-btn" id="submit2" defaultValue="Send Message" />
