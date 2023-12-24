@@ -40,7 +40,7 @@ const Header = () => {
                       </li>
                       <li>
                         <Link to="price" className="">
-                          Pricing
+                          Package
                         </Link>
                       </li>
                       <ul className="dropdown-menu"></ul>
